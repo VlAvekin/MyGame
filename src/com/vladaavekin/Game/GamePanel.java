@@ -8,12 +8,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     // dimension
-    public static final int WIDTH = 320;
-    public static final int HEIGHT = 180;
-    public static int SCALE = 3;
+    public static int SCALE = 2;
+//    public static final int WIDTH = 640;
+//    public static final int HEIGHT = 360;
+    private static final int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private static final int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+    public static final int WIDTH = width / 2;
+    public static final int HEIGHT = height / 2;
 
     // game thread
     private Thread thread;
@@ -31,8 +37,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     public GamePanel(){
 
         super();
-
-        this.SCALE = SCALE;
 
         Dimension dimension = new Dimension(WIDTH * SCALE,
                                             HEIGHT * SCALE);

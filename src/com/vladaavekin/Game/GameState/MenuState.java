@@ -7,6 +7,8 @@ import java.awt.event.KeyEvent;
 
 public class MenuState extends GameState {
 
+    private String MyGame = "/Backgrounds/Logo.png";
+
     private Background bg;
 
     private int currentChoice = 0;
@@ -21,8 +23,6 @@ public class MenuState extends GameState {
     private Font titleFont;
 
     private Font font;
-
-    private String MyGame = "/Backgrounds/Logo.png";
 
 
     public MenuState(GameStateManager gsm) {

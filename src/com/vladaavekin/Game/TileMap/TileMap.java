@@ -43,8 +43,8 @@ public class TileMap {
 
     public TileMap(int tileSize){
         this.tileSize = tileSize;
-        numRowsToDraw = GamePanel.HEIGHT / tileSize + 2;
-        numRowsToDraw = GamePanel.WIDTH / tileSize + 2;
+        numRowsToDraw = ( GamePanel.HEIGHT * GamePanel.SCALE) / tileSize + 2;
+        numColsToDraw = ( GamePanel.WIDTH  * GamePanel.SCALE) / tileSize + 2;
 
         tween = 0.07;
     }
@@ -58,11 +58,12 @@ public class TileMap {
 
             tiles = new Tile[2][numTilesAcross];
 
+
             BufferedImage subimage;
 
             for (int i = 0; i < numTilesAcross; i++) {
 
-                subimage = tileset.getSubimage( i * tileSize, 0, tileSize, tileSize);
+                subimage = tileset.getSubimage( i * tileSize, 0, tileSize , tileSize);
 
                 tiles[0][i] = new Tile(subimage, Tile.NORMAL);
 
@@ -168,7 +169,7 @@ public class TileMap {
 
             if (row >= numRows) break;
 
-            for (int col = colOffset; col < colOffset + numRowsToDraw; col++) {
+            for (int col = colOffset; col < colOffset + numColsToDraw; col++) {
 
                 if(col >= numCols) break;
 

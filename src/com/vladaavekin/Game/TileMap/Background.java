@@ -33,6 +33,10 @@ public class Background {
 
     }
 
+    public Background(String backgroundName) {
+
+    }
+
     public void setPosition(double x, double y){
         this.x = (x * moweScale) % GamePanel.WIDTH;
         this.y = (y * moweScale) % GamePanel.HEIGHT;
