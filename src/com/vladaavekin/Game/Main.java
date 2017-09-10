@@ -1,5 +1,7 @@
 package com.vladaavekin.Game;
 
+import com.vladaavekin.Game.TileMap.Background;
+
 import javax.swing.*;
 
 public class Main {
@@ -14,7 +16,7 @@ public class Main {
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setUndecorated(false);
-        window.setResizable(true);
+        window.setResizable(false);
         window.pack();
         window.setVisible(true);
         window.setLocationRelativeTo(null);

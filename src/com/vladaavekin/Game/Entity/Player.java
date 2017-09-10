@@ -148,7 +148,7 @@ public class Player extends MapObject {
                 animation.setFrames(sprites.get(SCTACHING));
                 animation.setDelay(50);
                 width = 60;
-                
+
             }
 
         }

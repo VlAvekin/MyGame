@@ -21,6 +21,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     public static final int WIDTH = width / 2;
     public static final int HEIGHT = height / 2;
 
+    private static final int wDop = (WIDTH - 640) * 2 + 5;
+    private static final int hDop = (HEIGHT - 360) * 2;
+
     // game thread
     private Thread thread;
     private boolean running;
@@ -87,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private void drawToScreen(){ // рисовать на экран
 
         Graphics graphics = getGraphics();
-        graphics.drawImage(image,0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
+        graphics.drawImage(image,0, 0, WIDTH * SCALE + wDop, HEIGHT * SCALE + hDop, null);
         graphics.dispose();
 
     }

@@ -9,7 +9,7 @@ public class Level1State extends GameState {
 
     private String tileNema = "/Tilesets/begraunt.png";
     private String mapName = "/Maps/level1-1.map";
-    private String backgroundName = "/Backgrounds/Logo.png";
+    private String backgroundName = "/Backgrounds/Fon-1.png";
 
     private TileMap tileMap;
     private Background bg;
@@ -32,6 +32,7 @@ public class Level1State extends GameState {
         tileMap.setPosition(0,0);
 
         bg = new Background(backgroundName, 0.1);
+
 
     }
 

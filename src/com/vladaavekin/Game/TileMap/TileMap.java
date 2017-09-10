@@ -32,7 +32,8 @@ public class TileMap {
 
     // tileset
     private BufferedImage tileset;
-    private int numTilesAcross;
+    private int numTilesAcrossWidth;
+    private int numTilesAcrossHeight;
     private Tile[][] tiles;
 
     // drawing
@@ -54,22 +55,29 @@ public class TileMap {
 
         try {
             tileset = ImageIO.read(getClass().getResourceAsStream(s));
-            numTilesAcross = tileset.getWidth() / tileSize;
+            numTilesAcrossWidth = tileset.getWidth() / tileSize;
+            numTilesAcrossHeight = tileset.getHeight() / tileSize;
 
-            tiles = new Tile[2][numTilesAcross];
+
+            tiles = new Tile[numTilesAcrossWidth][numTilesAcrossHeight];
 
 
             BufferedImage subimage;
 
-            for (int i = 0; i < numTilesAcross; i++) {
+            for (int i = 0; i < numTilesAcrossWidth; i++) {
 
-                subimage = tileset.getSubimage( i * tileSize, 0, tileSize , tileSize);
+                for (int j = 0; j < numTilesAcrossHeight; j++) {
 
-                tiles[0][i] = new Tile(subimage, Tile.NORMAL);
+                    subimage = tileset.getSubimage( i * tileSize, j * tileSize, tileSize , tileSize);
 
-                subimage = tileset.getSubimage(i * tileSize, tileSize, tileSize, tileSize);
+                    tiles[j][i] = new Tile(subimage, Tile.NORMAL);
 
-                tiles[1][i] = new Tile(subimage, Tile.BLOCKEN);
+                }
+
+
+//                subimage = tileset.getSubimage(i * tileSize, tileSize, tileSize, tileSize);
+//
+//                tiles[1][i] = new Tile(subimage, Tile.BLOCKEN);
 
             }
 
@@ -112,6 +120,10 @@ public class TileMap {
         }
     }
 
+    public  int getNumTilesAcross()  {
+        return  numCols * numRows;
+    }
+
     public int getTileSize() {
         return tileSize;
     }
@@ -135,8 +147,8 @@ public class TileMap {
     public int getType(int row, int col) {
 
         int rc = map[row][col];
-        int r = rc / numTilesAcross;
-        int c = rc % numTilesAcross;
+        int r = rc / numTilesAcrossWidth;
+        int c = rc % numTilesAcrossHeight;
 
         return tiles[r][c].getType();
 
@@ -176,8 +188,8 @@ public class TileMap {
                 if(map[row][col] == 0) continue;
 
                 int rc = map[row][col];
-                int r = rc / numTilesAcross;
-                int c = rc % numTilesAcross;
+                int r = rc / numTilesAcrossWidth;
+                int c = rc % numTilesAcrossHeight;
 
                 g.drawImage(tiles[r][c].getImage(),
                         (int)x + col * tileSize,
